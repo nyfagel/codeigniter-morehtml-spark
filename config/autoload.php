@@ -8,3 +8,4 @@
  */
 
 $autoload['helper'] = array('morehtml');
+?>
