@@ -6,7 +6,7 @@
  * @author		Jan Lindblom <jan@nyfagel.se>
  * @copyright	Copyright (c) 2012, Ny fågel.
  * @license		MIT
- * @version		0.3.2
+ * @version		0.3.3
  */
 
 if ( ! function_exists('p')) {
@@ -15,11 +15,13 @@ if ( ! function_exists('p')) {
 	 * 
 	 * @param string $data content of the paragraph.
 	 * @param string $class class of this paragraph.
+	 * @param string $id id of this paragraph.
 	 * @return string a string with the generated HTML.
 	 */
-	function p($data = '', $class = '') {
+	function p($data = '', $class = '', $id = '') {
 		$class = ($class != '') ? ' class="'.$class.'"' : $class;
-		return "<p".$class.">".$data."</p>";
+		$id = ($id != '') ? ' id="'.$id.'"' : $id;
+		return "<p".$class.$id.">".$data."</p>";
 	}
 }
 
@@ -101,6 +103,7 @@ if ( ! function_exists('div_open')) {
 	 * @return string a string with the generated HTML.
 	 */
 	function div_open($class = '', $id = '', $style = '', $itemtype = '', $itemprop = '') {
+		$class = ($class != '') ? ' class="'.$class.'"' : $class;
 		$id = ($id != '') ? ' id="'.$id.'"' : $id;
 		$style = ($style != '') ? ' style="'.$style.'"' : $style;
 		$itemtype = ($itemtype != '') ? ' itemscope itemtype="'.$itemtype.'"' : $itemtype;
@@ -122,11 +125,12 @@ if ( ! function_exists('span_open')) {
 	 * @return string a string with the generated HTML.
 	 */
 	function span_open($class = '', $id = '', $style = '', $itemtype = '', $itemprop = '') {
+		$class = ($class != '') ? ' class="'.$class.'"' : $class;
 		$id = ($id != '') ? ' id="'.$id.'"' : $id;
 		$style = ($style != '') ? ' style="'.$style.'"' : $style;
 		$itemtype = ($itemtype != '') ? ' itemscope itemtype="'.$itemtype.'"' : $itemtype;
 		$itemprop = ($itemprop != '') ? ' itemprop="'.$itemprop.'"' : $itemprop;
-		return "<div".$class.$id.$style.$itemtype.$itemprop.">";
+		return "<span".$class.$id.$style.$itemtype.$itemprop.">";
 	}
 }
 
@@ -153,8 +157,27 @@ if ( ! function_exists('span_close')) {
 }
 
 if ( ! function_exists('hr')) {
+	/**
+	 * Create a hr element.
+	 * 
+	 * @access public
+	 * @return string with the generated HTML.
+	 */
 	function hr() {
-		return '<hr/>';
+		return '<hr>';
+	}
+}
+
+if ( ! function_exists('br')) {
+	/**
+	 * Create one or more br elements.
+	 * 
+	 * @access public
+	 * @param int $num the number of br elements to create (default: 1).
+	 * @return string a string with the generated HTML.
+	 */
+	function br($num = 1) {
+		return str_repeat('<br>', $num);
 	}
 }
 
