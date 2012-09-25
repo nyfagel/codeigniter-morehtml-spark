@@ -3,6 +3,8 @@ codeigniter-morehtml-spark
 
 Extensions to the html helper.
 
+* Latest version: 0.3.3.
+
 ## Functions
 
 ### p($data = '', $class = '')
@@ -76,6 +78,12 @@ Close a span.
 ### hr()
 
 Generate a hr tag.
+
+ * @return string a string with the generated HTML.
+
+### br($num = 1)
+
+Generate one or more br tags.
 
  * @return string a string with the generated HTML.
 
